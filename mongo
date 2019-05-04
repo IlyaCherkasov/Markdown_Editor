@@ -1,3 +1,7 @@
 use mrkde
 db.files.find()
 db.files.remove({"text" : null})
+
+1) mongod to launch mongodb server
+2) npm run start for back
+3) npm run dev for front
