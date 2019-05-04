@@ -23,6 +23,7 @@ module.exports = function(app, client) {
   });
   app.post('/files', (req, res) => {
     const note = { title: req.body.title, text: req.body.text };
+    console.log(note)
     db.collection('files').insertOne(note, (err, result) => {
       if (err) { 
         res.send({ 'error': 'An error has occurred' }); 
@@ -34,7 +35,7 @@ module.exports = function(app, client) {
   app.delete('/files/:id', (req, res) => {
     const id = req.params.id;
     const details = { '_id': new ObjectID(id) };
-    db.collection('files').remove(details, (err, item) => {
+    db.collection('files').deleteOne(details, (err, item) => {
       if (err) {
         res.send({'error':'An error has occurred'});
       } else {
@@ -45,7 +46,7 @@ module.exports = function(app, client) {
   app.put ('/files/:id', (req, res) => {
     const id = req.params.id;
     const details = { '_id': new ObjectID(id) };
-    const note = { text: req.body.body, title: req.body.title };
+    const note = { title: req.body.title, text: req.body.text };
     db.collection('files').update(details, note, (err, result) => {
       if (err) {
           res.send({'error':'An error has occurred'});

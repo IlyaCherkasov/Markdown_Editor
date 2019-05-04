@@ -1,4 +1,8 @@
 new Vue({
+  http: {
+    emulateJSON: true,
+    emulateHTTP: true
+  },
   el: '#editor',
   data: {
     input: '# hello',
@@ -23,12 +27,18 @@ new Vue({
       this.input = e.target.value
     },
     save: function(){
-      //this.$http.put("localhost:8080/files");
+      let id = this.find_id(this.cur_file);
+      this.$http.put("http://localhost:8080/files/" + id, {
+        title: this.cur_title,
+        text: this.input
+      }).then(response =>{
+        console.log(response);
+      });
     },
     del: function(){
       let id = this.find_id(this.cur_file);
       this.$http.delete("http://localhost:8080/files/" + id).then(response =>{
-        console.log("Delete success");
+        console.log("Done delete");
       });
     }, 
     select: function(){
@@ -37,6 +47,7 @@ new Vue({
         let res = Object.values(response.body);
         this.input = res[2];
         this.cur_title = res[1];
+        console.log("Done open");
       });
     },
     refresh: function(){
@@ -50,8 +61,6 @@ new Vue({
       });
   },
   add: function(){
-    console.log(this.cur_title);
-    console.log(this.input);
     this.$http.post("http://localhost:8080/files", {
       title: this.cur_title,
       text: this.input
