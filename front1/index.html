@@ -13,23 +13,39 @@
     <script src="https://unpkg.com/marked@0.3.6"></script>
     <script src="https://unpkg.com/lodash@4.16.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <div class="container-fluid">
+
+    <div id="editor" class="container-fluid">
       <div class="row mt-4">
           <div class="col text-center">
               <h1>Markdown editor</h1>
         </div>
       </div>
-        <div id="editor" class="row mt-4">
+      <div class="container-fluid" id="selector">
+        <select class="col-md-10 mb-4" id="MySelect" @input="update_f">
+          <option value="1">suk</option>
+          <option value="2">bleat</option>
+        </select>
+        <div class="container-fluid">
+          <button class="col-md-1 mr-4">Save</button>
+          <button class="col-md-1 mr-4">Delete</button>
+          <button class="col-md-1 mr-4">Open</button>
+        </div>
+        <div class="container-fluid mt-4">
+          <label>Title: <input type="text" :value=title @input="update_t"></label>
+        </div>
+      </div>
+        <div  class="row mt-4">
             <div class="col-md-6">
               <h4>Input</h4>
-              <textarea :value="input" @input="update" id="info"></textarea>
+              <textarea :value="input" @input="update_m" id="info"></textarea>
             </div>
             <div class="col-md-6">
               <h4>Preview</h4>
               <div id="preview" v-html="compiledMarkdown"></div>
             </div>
           </div>
+           
     </div>
-    <div id="selector"></div>
+    <script src="script.js"></script>
   </body>
 </html>
