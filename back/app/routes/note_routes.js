@@ -23,7 +23,6 @@ module.exports = function(app, client) {
   });
   app.post('/files', (req, res) => {
     const note = { title: req.body.title, text: req.body.text };
-    console.log(note)
     db.collection('files').insertOne(note, (err, result) => {
       if (err) { 
         res.send({ 'error': 'An error has occurred' }); 
