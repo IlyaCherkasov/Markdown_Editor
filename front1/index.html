@@ -22,13 +22,13 @@
       </div>
       <div class="container-fluid" id="selector">
         <select class="col-md-10 mb-4" id="MySelect" @input="update_f">
-          <option value="1">suk</option>
-          <option value="2">bleat</option>
+          <option v-for="title in titles">{{ title }}</option>
         </select>
         <div class="container-fluid">
           <button class="col-md-1 mr-4">Save</button>
           <button class="col-md-1 mr-4">Delete</button>
           <button class="col-md-1 mr-4">Open</button>
+          <button class="col-md-1 mr-4" v:onclick="refresh">Refresh</button>
         </div>
         <div class="container-fluid mt-4">
           <label>Title: <input type="text" :value=title @input="update_t"></label>

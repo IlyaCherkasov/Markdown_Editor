@@ -3,7 +3,8 @@ new Vue({
     data: {
       input: '# hello',
       cur_file: '',
-      title: 'lox'
+      title: 'lox',
+      titles: ['omg', 'lol', 'mda']
     },
     computed: {
       compiledMarkdown: function () {
@@ -19,6 +20,9 @@ new Vue({
     },
     update_t: function(e){
         this.cur_file = e.target.value;
+    }
+    refresh: function(){
+        //request for all titles
     }
     }
   })
