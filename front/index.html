@@ -22,8 +22,8 @@
         </div>
       </div>
       <div class="container-fluid" id="selector">
-        <select class="col-md-10 mb-4" id="MySelect" @input="update_f">
-          <option v-for="title in titles">{{ title }}</option>
+        <select class="col-md-10 mb-4" id="MySelect" v-model="cur_file">
+          <option v-for="el in titles">{{ el.title }}</option>
         </select>
         <div class="container-fluid">
           <button class="col-md-1 mr-4" v-on:click="save">Save</button>
@@ -33,7 +33,7 @@
           <button class="col-md-1 mr-4" v-on:click="add">Add</button>
         </div>
         <div class="container-fluid mt-4">
-          <label>Title: <input type="text" :value=cur_title @input="update_t"></label>
+          <label>Title: <input type="text" v-model=cur_title></label>
         </div>
       </div>
         <div  class="row mt-4">

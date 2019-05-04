@@ -1,0 +1,3 @@
+use mrkde
+db.files.find()
+db.files.remove({"text" : null})
